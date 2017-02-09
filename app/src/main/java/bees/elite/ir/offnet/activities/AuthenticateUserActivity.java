@@ -94,6 +94,7 @@ public class AuthenticateUserActivity extends AppCompatActivity {
             layoutContentSelectShop = findViewById(R.id.splash_content_select_shop);
             username = (EditText) findViewById(R.id.rm_username);
             password = (EditText) findViewById(R.id.rm_password);
+            username.setText("09356577055");
             login = (Button) findViewById(R.id.rm_btn_login);
             // Pbar = (ProgressBar)findViewById(R.id.progressBar1);
             pref = new PrefManager(this);

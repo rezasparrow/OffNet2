@@ -58,9 +58,11 @@ public class StartAppActivity extends AppCompatActivity {
             startActivity(i);
         }
         else {
+            Intent mainPage = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(mainPage);
         }
-        notificationReceived();
-        displayFirebaseRegId();
+//        notificationReceived();
+//        displayFirebaseRegId();
     }
 
     @Override

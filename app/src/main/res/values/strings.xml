@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">پیام رسان سراج</string>
+    <string name="app_name">Off Net</string>
 
     <string name="action_settings">تنظیمات</string>
     <string name="action_reset">log out</string>
@@ -54,5 +54,10 @@
     <string name="No_network_connection">No network connection</string>
     <string name="back">بازگشت</string>
     <string name="title_user_authenticate">ورود کاربر</string>
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>
