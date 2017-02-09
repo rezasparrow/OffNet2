@@ -55,4 +55,10 @@
     <string name="back">بازگشت</string>
     <string name="title_user_authenticate">ورود کاربر</string>
 
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="requests">درخواست‌ها</string>
+    <string name="offers">پیشنهادها</string>
+
 </resources>
