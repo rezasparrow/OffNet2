@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/splash_intro_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/first_page"
+        android:contentDescription="@string/content_description_intro_screen"/>
+
+    <RelativeLayout
+        android:id="@+id/splash_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        tools:visibility="visible"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_description_background"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_background"/>
+
+        <!--  <LinearLayout
+              android:id="@+id/splash_content_no_connection"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:background="@color/black_transparent_70percent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:paddingBottom="30dp"
+              android:paddingLeft="@dimen/base_margin_horizontal"
+              android:paddingRight="@dimen/base_margin_horizontal"
+              android:paddingTop="10dp">-->
+
+
+        <!-- </LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/splash_content_select_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_transparent_70percent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="3dp"
+            android:paddingLeft="@dimen/base_margin_horizontal"
+            android:paddingRight="@dimen/base_margin_horizontal"
+            android:paddingTop="3dp">
+            <!--
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:paddingTop="20dp"
+                            android:text="@string/Select_the_country_where_you_want_to_shop"
+                            android:textColor="@color/textIconColorPrimary"
+                            android:textSize="18sp"
+                            android:textStyle="normal"/>-->
+           <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+               android:textColorHint="@color/colorPrimaryLight">
+                <EditText android:id="@+id/rm_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/textIconColorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:hint="نام کاربری"
+                     />
+          </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="@color/colorPrimaryLight">
+                <EditText android:id="@+id/rm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textIconColorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:hint="رمز عبور"
+                     />
+            </android.support.design.widget.TextInputLayout>
+            <!--       <Spinner
+                            android:id="@+id/splash_shop_selection_spinner"
+                            android:layout_width="290dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/base_margin_vertical"
+                            android:layout_marginTop="@dimen/base_margin_vertical_half"
+                            android:background="@drawable/spinner_selector_white"
+                            android:spinnerMode="dialog"
+                            tools:visibility="visible"/>-->
+            <!--<ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="28dp"
+                android:textAlignment="center"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                />-->
+
+
+            <Button
+                android:id="@+id/rm_btn_login"
+                style="@style/buttonPrimaryStyle"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:text="ورود"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

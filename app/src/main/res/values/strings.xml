@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">پیام رسان سراج</string>
+
+    <string name="action_settings">تنظیمات</string>
+    <string name="action_reset">log out</string>
+    <string name="SignInPage_title">Sign in page</string>
+    <string name="Login_button">Login</string>
+    <string name="title_activity_pink">PinkActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_my_location">Map</string>
+    <string name="hello_world">دو نقطه را بر روی نقشه انتخاب کنید</string>
+    <string name="app_title">سراج سامانه لوکیشن آریا</string>
+    <string name="str_tv_distance_time">Distance</string>
+    <string name="title_activity_maps">مسیریاب سراج</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="direction">یافتن مسیر</string>
+    <string name="mylocation">مکان یاب</string>
+    <string name="title_activity_wizard">اطلاعات تکمیلی</string>
+    <string name="next">بعدی</string>
+    <string name="prev">قبلی</string>
+    <string name="Loading">Loading …</string>
+    <string name="menu_action_search">Search</string>
+    <string name="archive">آرشیو پیغام</string>
+    <string name="search_hint">جستجو</string>
+    <string name="content_description_intro_screen">Intro screen</string>
+    <string name="content_description_background">Background</string>
+
+
+    <string name="title_activity_sms">فعال سازی حساب کاربری</string>
+    <string name="action_logout">خروج</string>
+    <string name="msg_enter_mobile">شماره موبایل خود را وارد کنید</string>
+    <string name="lbl_name">نام</string>
+    <string name="lbl_email">ایمیل</string>
+    <string name="lbl_mobile">موبایل</string>
+    <string name="lbl_next">بعدی</string>
+    <string name="msg_sit_back">پیامکی حاوی رمز برای شما ارسال خواهد شد</string>
+    <string name="msg_manual_otp">رمز ارسال شده را در قسمت پایین وارد کنید</string>
+    <string name="lbl_enter_otp">ورود رمز</string>
+    <string name="lbl_submit">تایید</string>
+
+    <string name="title_activity_rasteh">انتخاب رسته</string>
+    <string name="title_activity_authenticate_repairman">ورود</string>
+    <string name="title_activity_repairman_switch_state">تغییر وضعیت تعمیرکار</string>
+    <string name="title_activity_repairman_accept_reject_request">قبول یا رد درخواست</string>
+    <string name="gps_network_not_enabled">سرویس مکان نما غیر فعال است</string>
+    <string name="open_location_settings">رفتن به تنظیمات</string>
+    <string name="Cancel">انصراف</string>
+    <string name="title_activity_web_content_viewer">نمایش اطلاعات از وب</string>
+    <string name="title_activity_message_view">نمایش پیغام ها</string>
+    <string name="title_create_menu">ساخت منو</string>
+
+    <string name="No_network_connection">No network connection</string>
+    <string name="back">بازگشت</string>
+    <string name="title_user_authenticate">ورود کاربر</string>
+
+</resources>
