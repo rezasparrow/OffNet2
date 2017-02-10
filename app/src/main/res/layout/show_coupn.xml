@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    android:background="@color/black_transparent_70percent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <include layout="@layout/toolbar" android:id="@+id/main_appbar"
+            />
+<!--        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="73dp">
+
+            <ImageView
+                android:id="@+id/image_icon"
+                android:layout_weight="0.16"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:foregroundGravity="top|right|center_vertical|center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="85dp" />
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_height="25dp"
+                android:layout_gravity="top|left|center_vertical"
+                android:background="@drawable/arrow_back_icon"
+                android:layout_width="25dp"
+                android:layout_alignParentTop="true"
+                android:foregroundGravity="top|left|center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="330dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:text=""
+                android:id="@+id/creat_date"
+                android:layout_gravity="right|center_vertical|center_horizontal"
+                android:gravity="top|center_vertical|center_horizontal|center"
+                android:layout_marginLeft="199dp"
+                android:layout_height="45dp"
+                android:textColor="@color/cardview_dark_background"
+                android:textColorHint="@color/cardview_shadow_start_color"
+                android:textColorLink="?android:attr/textColorPrimaryInverseNoDisable"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/cast_libraries_material_featurehighlight_text_body_color"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp">
+            <View
+                android:layout_height="2dp"
+                android:background="@android:color/darker_gray"
+                android:layout_gravity="bottom|center_vertical|center_horizontal"
+                android:layout_width="285dp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/information"
+                android:layout_gravity="center_horizontal|right"
+                android:layout_weight="0.16"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="95dp" />
+
+
+            <TextView
+                android:id="@+id/link"
+                android:text="link"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:scrollHorizontally="false"/>
+
+            <ProgressBar
+                android:id="@+id/progressBarArchive"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="28dp"
+                android:textAlignment="center"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                />
+
+
+            <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">-->
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_height="wrap_content"
+                android:text="@string/archive"
+                android:id="@+id/button"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_width="81dp"
+                android:layout_alignParentTop="true"
+                android:foregroundGravity="center_vertical|center_horizontal|center"
+                android:gravity="center_vertical|center_horizontal|center"
+                android:shadowColor="@color/accent"
+                android:background="@color/accent"
+                android:textColor="@color/cardview_light_background"
+                android:textStyle="normal|bold"
+                android:layout_marginBottom="25dp" />
+
+            >
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
