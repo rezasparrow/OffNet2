@@ -61,7 +61,7 @@ public class StartAppActivity extends AppCompatActivity {
         } else {
 
             startService(new Intent(getApplicationContext(), LocationService.class));
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), UserSwitchStateActivity.class);
             startActivity(intent);
         }
         notificationReceived();
