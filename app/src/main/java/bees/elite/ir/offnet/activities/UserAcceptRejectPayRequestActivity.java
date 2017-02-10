@@ -10,22 +10,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-
 import at.markushi.ui.CircleButton;
 import bees.elite.ir.offnet.R;
 import bees.elite.ir.offnet.config.PrefManager;
 import bees.elite.ir.offnet.config.RestClient;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserAcceptRejectRequestActivity extends AppCompatActivity {
+public class UserAcceptRejectPayRequestActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     TextView descOfCoupn;
     TextView dateOfCoupn;
@@ -33,6 +26,7 @@ public class UserAcceptRejectRequestActivity extends AppCompatActivity {
     TextView area;
     TextView category;
     String coupnId;
+String paymentReqId;
     private PrefManager pref;
 
     final RestClient rc = RestClient.getInstance();
@@ -53,13 +47,14 @@ public class UserAcceptRejectRequestActivity extends AppCompatActivity {
         amountOfCoupn = (TextView) v.findViewById(R.id.user_ar_amount);
         area = (TextView) v.findViewById(R.id.user_ar_area);
         category = (TextView) v.findViewById(R.id.user_ar_category);
-        Intent i = getIntent();
-        descOfCoupn.setText(i.getStringExtra("desc"));
-        dateOfCoupn.setText(i.getStringExtra("date"));
-        amountOfCoupn.setText(i.getStringExtra("amount"));
-        area.setText(i.getStringExtra("area"));
-        category.setText(i.getStringExtra("category"));
-        coupnId = i.getStringExtra("id");
+        descOfCoupn.setText((String)getIntent().getSerializableExtra("descOfCoupn"));
+        dateOfCoupn.setText((String)getIntent().getSerializableExtra("dateOfCoupn"));
+        amountOfCoupn.setText((String) getIntent().getSerializableExtra("amountOfCoupn"));
+        area.setText((String) getIntent().getSerializableExtra("area"));
+        category.setText((String) getIntent().getSerializableExtra("category"));
+        coupnId=(String) getIntent().getSerializableExtra("coupnId");
+        paymentReqId=(String) getIntent().getSerializableExtra("paymentReqId");
+
 
         CircleButton acceptbtn = (CircleButton) v.findViewById(R.id.user_ar_accept_btn);
         CircleButton rejectbtn = (CircleButton) v.findViewById(R.id.user_ar_reject_btn);
@@ -76,37 +71,35 @@ public class UserAcceptRejectRequestActivity extends AppCompatActivity {
                             String res = response.body();
                             //check beshe ke user pass doroste
                             if (res!=null) {
-
-
-                                    Intent intent = new Intent(getApplicationContext(),UserAcceptRejectPayRequestActivity.class);
-                                    intent.putExtra("descOfCoupn",descOfCoupn.getText());
-                                    intent.putExtra("dateOfCoupn",dateOfCoupn.getText());
-                                    intent.putExtra("amountOfCoupn",amountOfCoupn.getText());
-                                    intent.putExtra("area",area.getText());
-                                    intent.putExtra("category",category.getText());
-                                    intent.putExtra("coupnId",coupnId);
-                                    intent.putExtra("paymentReqId",res);
+                                if (res.equals("true")) {
+                                    pref.setUserAuthenticateToken(res);
+                                    Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
+                                    pref.setUserVOList("");
                                     startActivity(intent);
                                     //Pbar.setVisibility(View.GONE);
-                                    Toast.makeText(UserAcceptRejectRequestActivity.this, "درخواست  پرداخت با موفقیت انجام شد", Toast.LENGTH_LONG).show();
-
+                                    Toast.makeText(UserAcceptRejectPayRequestActivity.this, "  پرداخت با موفقیت انجام شد", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+                                    Toast.makeText(UserAcceptRejectPayRequestActivity.this, "خطا در   پرداخت", Toast.LENGTH_SHORT).show();
+                                    // Pbar.setVisibility(View.GONE);
+                                }
                             }
                             else {
 
-                                Toast.makeText(UserAcceptRejectRequestActivity.this, "خطا در درخواست  پرداخت", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserAcceptRejectPayRequestActivity.this, "خطا در   پرداخت", Toast.LENGTH_SHORT).show();
                                 // Pbar.setVisibility(View.GONE);
                             }
 
                         } else {
 
-                            Toast.makeText(UserAcceptRejectRequestActivity.this, "not success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserAcceptRejectPayRequestActivity.this, "not success", Toast.LENGTH_SHORT).show();
                             // Pbar.setVisibility(View.GONE);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-                        Toast.makeText(UserAcceptRejectRequestActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserAcceptRejectPayRequestActivity.this, "failed", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -129,29 +122,29 @@ public class UserAcceptRejectRequestActivity extends AppCompatActivity {
                                     pref.setUserVOList("");
                                     startActivity(intent);
                                     //Pbar.setVisibility(View.GONE);
-                                    Toast.makeText(UserAcceptRejectRequestActivity.this, "درخواست لغو پرداخت با موفقیت انجام شد", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(UserAcceptRejectPayRequestActivity.this, " لغو پرداخت با موفقیت انجام شد", Toast.LENGTH_LONG).show();
                                 }
                                 else{
-                                    Toast.makeText(UserAcceptRejectRequestActivity.this, "خطا در درخواست  لغو پرداخت", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(UserAcceptRejectPayRequestActivity.this, "خطا در   لغو پرداخت", Toast.LENGTH_SHORT).show();
                                     // Pbar.setVisibility(View.GONE);
                                 }
                             }
                             else {
 
-                                Toast.makeText(UserAcceptRejectRequestActivity.this, "خطا در درخواست  لغو پرداخت", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserAcceptRejectPayRequestActivity.this, "خطا در   لغو پرداخت", Toast.LENGTH_SHORT).show();
                                 // Pbar.setVisibility(View.GONE);
                             }
 
                         } else {
 
-                            Toast.makeText(UserAcceptRejectRequestActivity.this, "not success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserAcceptRejectPayRequestActivity.this, "not success", Toast.LENGTH_SHORT).show();
                             // Pbar.setVisibility(View.GONE);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-                        Toast.makeText(UserAcceptRejectRequestActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UserAcceptRejectPayRequestActivity.this, "failed", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

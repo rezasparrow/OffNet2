@@ -97,7 +97,13 @@
 
         <activity
             android:name=".activities.UserAcceptRejectRequestActivity"
-            android:label="@string/title_activity_user_switch_state"
+            android:label="@string/title_activity_repairman_accept_reject_request"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+        <activity
+            android:name=".activities.UserAcceptRejectPayRequestActivity"
+            android:label="@string/title_activity_repairman_accept_reject_request"
             android:windowSoftInputMode="adjustResize" >
         </activity>
 
