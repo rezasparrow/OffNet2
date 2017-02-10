@@ -4,7 +4,7 @@ public class Config {
     // server URL configuration
 
  // public static final String URL_SERAJ_API_BASE =   "http://79.175.172.108/";
-   public static final String URL_SERAJ_API_BASE =   "http://192.168.21.91:8080/";
+   public static final String URL_SERAJ_API_BASE =   "http://192.168.21.88:8080/";
 //public static final String URL_SERAJ_API_BASE =   "http://serajcloud.ir";
 
    /* public static final String URL_SERAJ_API_BASE =   "http://192.168.1.36:8181/";*/

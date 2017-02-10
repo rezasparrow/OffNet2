@@ -18,7 +18,6 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 
-
 import bees.elite.ir.offnet.R;
 import bees.elite.ir.offnet.config.PrefManager;
 import bees.elite.ir.offnet.config.RestClient;
@@ -41,11 +40,10 @@ public class UserSwitchStateActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        if(pref.isNotificationActive()) {
+        if (pref.isNotificationActive()) {
             sb.setChecked(true);
             sb.setShowText(true);
-        }
-        else{
+        } else {
             sb.setChecked(false);
             sb.setShowText(false);
         }
@@ -57,7 +55,7 @@ public class UserSwitchStateActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });*/
-       // sb.setChecked(pref.isNotificationActive());//ui dorost kar nemikone
+        // sb.setChecked(pref.isNotificationActive());//ui dorost kar nemikone
         sb.setOnCheckedChangeListener(new SwitchCompat.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton s, boolean isChecked) {
@@ -77,11 +75,11 @@ public class UserSwitchStateActivity extends AppCompatActivity {
         });
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("تنظیمات");
-       PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("بستن برنامه");
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("بستن برنامه");
         //PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("جانمایی");
-       // PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("سیستم تعمیرکار");
-       // PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("ورود یوزر");
-       // PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("تغییر وضعیت تعمیرکار");
+        // PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("سیستم تعمیرکار");
+        // PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("ورود یوزر");
+        // PrimaryDrawerItem item6 = new PrimaryDrawerItem().withIdentifier(6).withName("تغییر وضعیت تعمیرکار");
 //create the drawer and remember the `Drawer` result object
         Drawer result = new DrawerBuilder()
                 .withActivity(this)
@@ -91,7 +89,7 @@ public class UserSwitchStateActivity extends AppCompatActivity {
                         new DividerDrawerItem(),
                         item2,
                         new DividerDrawerItem()
-                       // new DividerDrawerItem(),
+                        // new DividerDrawerItem(),
                         /*item4,
                         new DividerDrawerItem(),
                         item5,
@@ -121,7 +119,7 @@ public class UserSwitchStateActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-      //  EventBus.getDefault().register(UserSwitchStateActivity.this);
+        //  EventBus.getDefault().register(UserSwitchStateActivity.this);
     }
 
     @Override
@@ -131,7 +129,7 @@ public class UserSwitchStateActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-       // EventBus.getDefault().unregister(UserSwitchStateActivity.this);
+        // EventBus.getDefault().unregister(UserSwitchStateActivity.this);
         super.onStop();
     }
 

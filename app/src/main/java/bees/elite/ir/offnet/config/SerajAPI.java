@@ -3,6 +3,7 @@ package bees.elite.ir.offnet.config;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -16,6 +17,10 @@ public interface SerajAPI {
 
     @GET("/api/pay")
     Call<String> pay(@Query("username") String username, @Query("couponId") String couponId, @Query("deviceId") String deviceId);
+
+    @POST("/api/location")
+    Call<String> sendLocation(@Query("username") String userName , @Query("deviceId") String deviceId ,@Query("latitude") String latitude , @Query("longitude")  String longitude );
+
 
 /*
     @GET("/jersey/mobileRestFace/getNewUserNotesByToken")

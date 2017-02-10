@@ -38,12 +38,24 @@ public class PrefManager {
     private static final String KEY_REPAIRMAN_TRADE_UNIT = "";
     private static final String KEY_last_serach = "last_search";
     private static final String KEY_userVOList = "userVOList";
-    private static final String KEY_LOCATION_LAT="latitude";
-    private static final String KEY_LOCATION_LONG="longitude";
+    private static final String KEY_LOCATION_LAT = "latitude";
+    private static final String KEY_LOCATION_LONG = "longitude";
+    private static final String KEY_USER_NAME = "userName";
+
     public void setLongitude(String token) {
         editor.putString(KEY_LOCATION_LONG, token);
         editor.commit();
     }
+
+    public String getUserName() {
+        return pref.getString(KEY_USER_NAME, null);
+    }
+
+    public void setUserName(String token) {
+        editor.putString(KEY_USER_NAME, token);
+        editor.commit();
+    }
+
     public String getLongitude() {
         return pref.getString(KEY_LOCATION_LONG, null);
     }
@@ -52,6 +64,7 @@ public class PrefManager {
         editor.putString(KEY_LOCATION_LAT, token);
         editor.commit();
     }
+
     public String getLatitude() {
         return pref.getString(KEY_LOCATION_LAT, null);
     }
@@ -66,14 +79,17 @@ public class PrefManager {
     public boolean isNotificationActive() {
         return pref.getBoolean(KEY_REPAIRMAN_STATE, false);
     }
+
     public void setIsNotificationActive(boolean isActive) {
         editor.putBoolean(KEY_REPAIRMAN_STATE, isActive);
         editor.commit();
     }
-    public String getUserVOList(){
+
+    public String getUserVOList() {
         return pref.getString(KEY_userVOList, null);
     }
-    public void setUserVOList(String userVoJson){
+
+    public void setUserVOList(String userVoJson) {
         editor.putString(KEY_userVOList, userVoJson);
         editor.commit();
     }
@@ -82,13 +98,16 @@ public class PrefManager {
         editor.putString(KEY_USER_AUTHENTICATE_TOKEN, token);
         editor.commit();
     }
+
     public String getUserAuthenticateToken() {
         return pref.getString(KEY_USER_AUTHENTICATE_TOKEN, null);
     }
+
     public void setAppRegId(String token) {
         editor.putString("regId", token);
         editor.commit();
     }
+
     public String getAppRegId() {
         return pref.getString("regId", null);
     }
@@ -97,16 +116,20 @@ public class PrefManager {
         editor.putString(KEY_REPAIRMAN_TRADE_UNIT, val);
         editor.commit();
     }
+
     public String getRepairmanTradeUnit() {
         return pref.getString(KEY_REPAIRMAN_TRADE_UNIT, null);
     }
+
     public void setWizardResultTemp(String wizardResult) {
         editor.putString(KEY_WIZARD_RESULT_TEMP, wizardResult);
         editor.commit();
     }
+
     public String getWizardResultTemp() {
         return pref.getString(KEY_WIZARD_RESULT_TEMP, null);
     }
+
     public boolean hasWizardResultTempValue() {
         return !pref.getString(KEY_WIZARD_RESULT_TEMP, null).equals("jSON");
     }
@@ -143,17 +166,21 @@ public class PrefManager {
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGED_IN, false);
     }
+
     public boolean isWaitingForSms() {
         return pref.getBoolean(KEY_IS_WAITING_FOR_SMS, false);
     }
+
     public void setIsWaitingForSms(boolean isWaiting) {
         editor.putBoolean(KEY_IS_WAITING_FOR_SMS, isWaiting);
         editor.commit();
     }
+
     public void clearSession() {
         editor.clear();
         editor.commit();
     }
+
     public void logOut() {
         editor.putBoolean(KEY_IS_LOGGED_IN, false);
         editor.commit();
@@ -165,5 +192,7 @@ public class PrefManager {
         profile.put("email", pref.getString(KEY_EMAIL, null));
         profile.put("mobile", pref.getString(KEY_MOBILE, null));
         return profile;
-        }
-        }
+    }
+
+
+}

@@ -29,6 +29,7 @@ import java.util.List;
 import bees.elite.ir.offnet.R;
 import bees.elite.ir.offnet.config.PrefManager;
 import bees.elite.ir.offnet.config.RestClient;
+import bees.elite.ir.offnet.service.LocationService;
 import bees.elite.ir.offnet.user.Coupn;
 
 
@@ -54,13 +55,14 @@ public class StartAppActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID);
         pref.setAppRegId(android_id);*/
 
-        if(pref.getUserAuthenticateToken()==null || pref.getUserAuthenticateToken().equals("")) {
+        if (pref.getUserAuthenticateToken() == null || pref.getUserAuthenticateToken().equals("")) {
             Intent i = new Intent(getApplicationContext(), AuthenticateUserActivity.class);
             startActivity(i);
-        }
-        else {
-            Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
-              startActivity(intent);
+        } else {
+
+            startService(new Intent(getApplicationContext(), LocationService.class));
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
         }
         notificationReceived();
         displayFirebaseRegId();

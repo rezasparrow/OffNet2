@@ -123,6 +123,7 @@ public class AuthenticateUserActivity extends AppCompatActivity {
                                     if (res!=null) {
                                         if (res.equals("true")) {
                                             pref.setUserAuthenticateToken(res);
+                                            pref.setUserName(username.getText().toString());
                                             Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
                                             pref.setUserVOList("");
                                            startActivity(intent);

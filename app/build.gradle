@@ -56,6 +56,7 @@ dependencies {
     compile 'com.google.firebase:firebase-config:10.0.1'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.loopj.android:android-async-http:1.4.9'
     testCompile 'junit:junit:4.12'
 }
 
