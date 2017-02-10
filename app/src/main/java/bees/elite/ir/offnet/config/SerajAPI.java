@@ -13,6 +13,10 @@ public interface SerajAPI {
 
     @GET("/api/authenticate")
     Call<String> authenticate(@Query("username") String username, @Query("password") String password, @Query("deviceId") String deviceId);
+
+    @GET("/api/pay")
+    Call<String> pay(@Query("username") String username, @Query("couponId") String couponId, @Query("deviceId") String deviceId);
+
 /*
     @GET("/jersey/mobileRestFace/getNewUserNotesByToken")
     Call<UserNoteModel> getNewUserNotesByToken(@Query("token") String token);
