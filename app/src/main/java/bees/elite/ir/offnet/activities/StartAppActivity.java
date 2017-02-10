@@ -95,7 +95,7 @@ public class StartAppActivity extends AppCompatActivity {
     public void notificationReceived() {
         Intent intent = getIntent();
         if (intent != null) {
-            if (intent.hasExtra("noteType")) {
+
                 Toast.makeText(getApplicationContext(), "دریافت نوتیفیکیشن", Toast.LENGTH_LONG).show();
                // if (intent.getStringExtra("noteType").equals("general")) {
                     Toast.makeText(getApplicationContext(), "Type:general", Toast.LENGTH_LONG).show();
@@ -133,7 +133,7 @@ public class StartAppActivity extends AppCompatActivity {
                     startActivity(i);*/
                // }
             }
-        }
+
     }
 
     private void displayFirebaseRegId() {
