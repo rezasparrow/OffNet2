@@ -16,14 +16,17 @@ public interface SerajAPI {
     Call<String> authenticate(@Query("username") String username, @Query("password") String password, @Query("deviceId") String deviceId);
 
     @GET("/api/pay")
-    Call<String> pay(@Query("username") String username, @Query("couponId") String couponId, @Query("deviceId") String deviceId);
+    Call<String> pay(@Query("username") String username, @Query("couponId") String couponId, @Query("deviceId") String deviceId, @Query("paymentRequestId") String paymentReqId);
 
     @GET("/api/reject")
-    Call<String> reject(@Query("username") String username, @Query("couponId") String couponId, @Query("deviceId") String deviceId);
+    Call<String> reject(@Query("username") String username, @Query("couponId") String couponId, @Query("deviceId") String deviceId, @Query("paymentRequestId") String paymentReqId);
 
     @GET("/api/location")
     Call<String> sendLocation(@Query("username") String userName , @Query("deviceId") String deviceId ,@Query("latitude") String latitude , @Query("longitude")  String longitude );
 
+
+    @GET("/api/add")
+    Call<String> addRequest(@Query("username") String username, @Query("couponId") String couponId, @Query("deviceId") String deviceId);
 
 /*
     @GET("/jersey/mobileRestFace/getNewUserNotesByToken")

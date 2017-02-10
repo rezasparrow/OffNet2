@@ -3,6 +3,7 @@ package bees.elite.ir.offnet.activities;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ public class UserAcceptRejectPayRequestActivity extends AppCompatActivity {
     TextView category;
     String coupnId;
 String paymentReqId;
+    private Handler handler = new Handler();
     private PrefManager pref;
 
     final RestClient rc = RestClient.getInstance();
@@ -56,13 +58,19 @@ String paymentReqId;
         paymentReqId=(String) getIntent().getSerializableExtra("paymentReqId");
 
 
+        handler.postDelayed(runnable, 240000);
+
+
+
+
+
         CircleButton acceptbtn = (CircleButton) v.findViewById(R.id.user_ar_accept_btn);
         CircleButton rejectbtn = (CircleButton) v.findViewById(R.id.user_ar_reject_btn);
 
         acceptbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<String> call = rc.getApi().pay(pref.getUserName(), coupnId.toString().trim(), pref.getAppRegId());
+                Call<String> call = rc.getApi().pay(pref.getUserName(), coupnId.toString().trim(), pref.getAppRegId(),paymentReqId);
 
                 call.enqueue(new Callback<String>() {
                     @Override
@@ -107,7 +115,7 @@ String paymentReqId;
         rejectbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<String> call = rc.getApi().reject(pref.getUserName(), coupnId.toString().trim(), pref.getAppRegId());
+                Call<String> call = rc.getApi().reject(pref.getUserName(), coupnId.toString().trim(), pref.getAppRegId(),paymentReqId);
 
                 call.enqueue(new Callback<String>() {
                     @Override
@@ -270,4 +278,14 @@ String paymentReqId;
         coupnId = i.getStringExtra("id");
 
     }
+
+    final Runnable runnable = new Runnable()
+    {
+        public void run()
+        {
+            Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
+            startActivity(intent);
+        }
+    };
+
 }

@@ -105,25 +105,27 @@ public class StartAppActivity extends AppCompatActivity {
                         String jsonOfUserVoList=pref.getUserVOList();
                         Type type = new TypeToken<List<Coupn>>(){}.getType();
                         //List<UserNoteVO> l=gson.fromJson(jsonOfUserVoList,type);
-                        JSONObject jsonObj = new JSONObject(intent.getStringExtra("coupn"));
-                        JsonParser parser = new JsonParser();
-                        JsonElement mJson =  parser.parse(intent.getStringExtra("coupn"));
+                        if(intent.getStringExtra("coupn")!=null) {
+                            JSONObject jsonObj = new JSONObject(intent.getStringExtra("coupn"));
+                            JsonParser parser = new JsonParser();
+                            JsonElement mJson = parser.parse(intent.getStringExtra("coupn"));
 
-                        Coupn userNoteVO = gson.fromJson(mJson, Coupn.class);
-                       // l.add(userNoteVO);
-                       // Collections.reverse(l);
-                        //String jsonOfuserVOList = gson.toJson(l);
-                      //  pref.setUserVOList(jsonOfuserVOList);
-                        Intent i = new Intent(getApplicationContext(), UserAcceptRejectRequestActivity.class);
+                            Coupn userNoteVO = gson.fromJson(mJson, Coupn.class);
+                            // l.add(userNoteVO);
+                            // Collections.reverse(l);
+                            //String jsonOfuserVOList = gson.toJson(l);
+                            //  pref.setUserVOList(jsonOfuserVOList);
+                            Intent i = new Intent(getApplicationContext(), UserAcceptRejectRequestActivity.class);
 
-                        i.putExtra("desc",jsonObj.getString("desc"));
-                        i.putExtra("date", jsonObj.getString("date"));
-                        i.putExtra("amount", jsonObj.getString("amount"));
-                        i.putExtra("area", jsonObj.getString("area"));
-                        i.putExtra("category", jsonObj.getString("category"));
-                        i.putExtra("id", jsonObj.getString("id"));
+                            i.putExtra("desc", jsonObj.getString("desc"));
+                            i.putExtra("date", jsonObj.getString("date"));
+                            i.putExtra("amount", jsonObj.getString("amount"));
+                            i.putExtra("area", jsonObj.getString("area"));
+                            i.putExtra("category", jsonObj.getString("category"));
+                            i.putExtra("id", jsonObj.getString("id"));
 
-                        startActivity(i);
+                            startActivity(i);
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

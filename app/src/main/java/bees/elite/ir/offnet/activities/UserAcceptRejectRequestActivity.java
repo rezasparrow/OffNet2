@@ -67,7 +67,7 @@ public class UserAcceptRejectRequestActivity extends AppCompatActivity {
         acceptbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<String> call = rc.getApi().pay(pref.getUserName(), coupnId.toString().trim(), pref.getAppRegId());
+                Call<String> call = rc.getApi().addRequest(pref.getUserName(), coupnId.toString().trim(), pref.getAppRegId());
 
                 call.enqueue(new Callback<String>() {
                     @Override
@@ -114,49 +114,10 @@ public class UserAcceptRejectRequestActivity extends AppCompatActivity {
         rejectbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<String> call = rc.getApi().reject(pref.getUserName(), coupnId.toString().trim(), pref.getAppRegId());
-
-                call.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        if (response.isSuccessful()) {
-                            String res = response.body();
-                            //check beshe ke user pass doroste
-                            if (res!=null) {
-                                if (res.equals("true")) {
-                                    pref.setUserAuthenticateToken(res);
-                                    Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
-                                    pref.setUserVOList("");
-                                    startActivity(intent);
-                                    //Pbar.setVisibility(View.GONE);
-                                    Toast.makeText(UserAcceptRejectRequestActivity.this, "درخواست لغو پرداخت با موفقیت انجام شد", Toast.LENGTH_LONG).show();
-                                }
-                                else{
-                                    Toast.makeText(UserAcceptRejectRequestActivity.this, "خطا در درخواست  لغو پرداخت", Toast.LENGTH_SHORT).show();
-                                    // Pbar.setVisibility(View.GONE);
-                                }
-                            }
-                            else {
-
-                                Toast.makeText(UserAcceptRejectRequestActivity.this, "خطا در درخواست  لغو پرداخت", Toast.LENGTH_SHORT).show();
-                                // Pbar.setVisibility(View.GONE);
-                            }
-
-                        } else {
-
-                            Toast.makeText(UserAcceptRejectRequestActivity.this, "not success", Toast.LENGTH_SHORT).show();
-                            // Pbar.setVisibility(View.GONE);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-                        Toast.makeText(UserAcceptRejectRequestActivity.this, "failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                Intent intent = new Intent(getApplicationContext(), UserSwitchStateActivity.class);
+                startActivity(intent);
             }
         });
-
 
         /*PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("ریست لاگین");
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("تعمیرکار");
