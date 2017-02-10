@@ -9,14 +9,18 @@
     <color name="divider">#727272</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorPink">#D2B6FF</color>
-    <color name="primary">#ff1d02</color>
+ <!--   <color name="primary">#ff1d02</color>
     <color name="primary_dark">#cf1920</color>
-    <color name="primary_light">#f2816f</color>
+    <color name="primary_light">#f2816f</color>-->
     <color name="accent">#10a8e4</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#1d1c1c</color>
     <color name="color_clicked">#dbb3cf</color>
+
+    <color name="primary">#6c004b</color>
+    <color name="primary_dark">#4d0035</color>
+    <color name="primary_light">#9a357b</color>
 
 
     <color name="transparent">#00000000</color>

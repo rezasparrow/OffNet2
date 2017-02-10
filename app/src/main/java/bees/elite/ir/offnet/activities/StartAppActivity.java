@@ -49,20 +49,20 @@ public class StartAppActivity extends AppCompatActivity {
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
         // setContentView(R.layout.content_main);
         pref = new PrefManager(this);
-        String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+        /*String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
-        pref.setAppRegId(android_id);
+        pref.setAppRegId(android_id);*/
 
         if(pref.getUserAuthenticateToken()==null || pref.getUserAuthenticateToken().equals("")) {
             Intent i = new Intent(getApplicationContext(), AuthenticateUserActivity.class);
             startActivity(i);
         }
         else {
-            Intent mainPage = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(mainPage);
+            Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
+              startActivity(intent);
         }
-//        notificationReceived();
-//        displayFirebaseRegId();
+        notificationReceived();
+        displayFirebaseRegId();
     }
 
     @Override
@@ -135,6 +135,7 @@ public class StartAppActivity extends AppCompatActivity {
 
         String regId = pref.getAppRegId();
 
+        Toast.makeText(getApplicationContext(), pref.getLatitude(), Toast.LENGTH_LONG).show();
 
         if (!TextUtils.isEmpty(regId))
             Toast.makeText(getApplicationContext(), regId, Toast.LENGTH_LONG).show();

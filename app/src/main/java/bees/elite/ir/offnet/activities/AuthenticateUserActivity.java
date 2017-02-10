@@ -2,6 +2,7 @@ package bees.elite.ir.offnet.activities;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -94,7 +95,6 @@ public class AuthenticateUserActivity extends AppCompatActivity {
             layoutContentSelectShop = findViewById(R.id.splash_content_select_shop);
             username = (EditText) findViewById(R.id.rm_username);
             password = (EditText) findViewById(R.id.rm_password);
-            username.setText("09356577055");
             login = (Button) findViewById(R.id.rm_btn_login);
             // Pbar = (ProgressBar)findViewById(R.id.progressBar1);
             pref = new PrefManager(this);
@@ -121,19 +121,25 @@ public class AuthenticateUserActivity extends AppCompatActivity {
                                     String res = response.body();
                                     //check beshe ke user pass doroste
                                     if (res!=null) {
-                                        if (!res.equals("")) {
+                                        if (res.equals("true")) {
                                             pref.setUserAuthenticateToken(res);
-                                            //Intent intent = new Intent(getApplicationContext(), ShowMessagesActivity.class);
+                                            Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
                                             pref.setUserVOList("");
-                                           // startActivity(intent);
+                                           startActivity(intent);
                                             //Pbar.setVisibility(View.GONE);
                                             Toast.makeText(AuthenticateUserActivity.this, "شما با موفقیت وارد برنامه شدید", Toast.LENGTH_LONG).show();
                                         }
+                                        else{
+                                            Toast.makeText(AuthenticateUserActivity.this, "یوزرنیم یا پسورد غلط است", Toast.LENGTH_SHORT).show();
+                                            // Pbar.setVisibility(View.GONE);
+                                        }
                                     }
-                                    else{
-                                        Toast.makeText(AuthenticateUserActivity.this, "یوزرنیم یا پسورد غلط است", Toast.LENGTH_SHORT).show();
+                                    else {
+
+                                        Toast.makeText(AuthenticateUserActivity.this, "خطا در ورود کاربر", Toast.LENGTH_SHORT).show();
                                         // Pbar.setVisibility(View.GONE);
                                     }
+
                                 } else {
 
                                     Toast.makeText(AuthenticateUserActivity.this, "not success", Toast.LENGTH_SHORT).show();

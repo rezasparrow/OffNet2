@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Off Net</string>
+    <string name="app_name">سامانه اطلاع رسانی تخیف های هماپی</string>
 
     <string name="action_settings">تنظیمات</string>
     <string name="action_reset">log out</string>
@@ -42,7 +42,7 @@
 
     <string name="title_activity_rasteh">انتخاب رسته</string>
     <string name="title_activity_authenticate_repairman">ورود</string>
-    <string name="title_activity_repairman_switch_state">تغییر وضعیت تعمیرکار</string>
+    <string name="title_activity_user_switch_state">تغییر وضعیت کاربر</string>
     <string name="title_activity_repairman_accept_reject_request">قبول یا رد درخواست</string>
     <string name="gps_network_not_enabled">سرویس مکان نما غیر فعال است</string>
     <string name="open_location_settings">رفتن به تنظیمات</string>
@@ -54,10 +54,5 @@
     <string name="No_network_connection">No network connection</string>
     <string name="back">بازگشت</string>
     <string name="title_user_authenticate">ورود کاربر</string>
-
-
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

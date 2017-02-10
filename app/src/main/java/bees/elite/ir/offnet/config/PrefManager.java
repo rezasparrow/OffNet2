@@ -38,6 +38,23 @@ public class PrefManager {
     private static final String KEY_REPAIRMAN_TRADE_UNIT = "";
     private static final String KEY_last_serach = "last_search";
     private static final String KEY_userVOList = "userVOList";
+    private static final String KEY_LOCATION_LAT="latitude";
+    private static final String KEY_LOCATION_LONG="longitude";
+    public void setLongitude(String token) {
+        editor.putString(KEY_LOCATION_LONG, token);
+        editor.commit();
+    }
+    public String getLongitude() {
+        return pref.getString(KEY_LOCATION_LONG, null);
+    }
+
+    public void setLatitude(String token) {
+        editor.putString(KEY_LOCATION_LAT, token);
+        editor.commit();
+    }
+    public String getLatitude() {
+        return pref.getString(KEY_LOCATION_LAT, null);
+    }
 
 
     public PrefManager(Context context) {
@@ -46,10 +63,10 @@ public class PrefManager {
         editor = pref.edit();
     }
 
-    public boolean isRepairManActive() {
+    public boolean isNotificationActive() {
         return pref.getBoolean(KEY_REPAIRMAN_STATE, false);
     }
-    public void setIsRepairManActive(boolean isActive) {
+    public void setIsNotificationActive(boolean isActive) {
         editor.putBoolean(KEY_REPAIRMAN_STATE, isActive);
         editor.commit();
     }
