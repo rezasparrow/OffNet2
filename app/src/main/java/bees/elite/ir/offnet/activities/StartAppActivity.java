@@ -29,6 +29,7 @@ import java.util.List;
 import bees.elite.ir.offnet.R;
 import bees.elite.ir.offnet.config.PrefManager;
 import bees.elite.ir.offnet.config.RestClient;
+import bees.elite.ir.offnet.user.Coupn;
 
 
 public class StartAppActivity extends AppCompatActivity {
@@ -90,45 +91,47 @@ public class StartAppActivity extends AppCompatActivity {
     }
 
     public void notificationReceived() {
-     /*   Intent intent = getIntent();
+        Intent intent = getIntent();
         if (intent != null) {
             if (intent.hasExtra("noteType")) {
                 Toast.makeText(getApplicationContext(), "دریافت نوتیفیکیشن", Toast.LENGTH_LONG).show();
-                if (intent.getStringExtra("noteType").equals("general")) {
+               // if (intent.getStringExtra("noteType").equals("general")) {
                     Toast.makeText(getApplicationContext(), "Type:general", Toast.LENGTH_LONG).show();
-                    String usernote = (String) intent.getSerializableExtra("userNoteVO");
+                    String coupn = (String) intent.getSerializableExtra("coupn");
                     try {
                         Gson gson = new Gson();
                         String jsonOfUserVoList=pref.getUserVOList();
-                        Type type = new TypeToken<List<UserNoteVO>>(){}.getType();
-                        List<UserNoteVO> l=gson.fromJson(jsonOfUserVoList,type);
-                        JSONObject jsonObj = new JSONObject(intent.getStringExtra("userNoteVO"));
+                        Type type = new TypeToken<List<Coupn>>(){}.getType();
+                        //List<UserNoteVO> l=gson.fromJson(jsonOfUserVoList,type);
+                        JSONObject jsonObj = new JSONObject(intent.getStringExtra("coupn"));
                         JsonParser parser = new JsonParser();
-                        JsonElement mJson =  parser.parse(intent.getStringExtra("userNoteVO"));
+                        JsonElement mJson =  parser.parse(intent.getStringExtra("coupn"));
 
-                        UserNoteVO userNoteVO = gson.fromJson(mJson, UserNoteVO.class);
-                        l.add(userNoteVO);
-                        Collections.reverse(l);
-                        String jsonOfuserVOList = gson.toJson(l);
-                        pref.setUserVOList(jsonOfuserVOList);
-                        Intent i = new Intent(getApplicationContext(), ViewMessageInformationActivity.class);
-                        i.putExtra("information",jsonObj.getString("message"));
-                        i.putExtra("subjectMessage",jsonObj.getString("noteType"));
-                        i.putExtra("userNoteId",jsonObj.getString("id"));
-                        i.putExtra("importance",jsonObj.getString("importance"));
-                        i.putExtra("creationDate",jsonObj.getString("creationDateFA"));
-                        i.putExtra("goToAddress",jsonObj.getString("gotoAddress"));
+                        Coupn userNoteVO = gson.fromJson(mJson, Coupn.class);
+                       // l.add(userNoteVO);
+                       // Collections.reverse(l);
+                        //String jsonOfuserVOList = gson.toJson(l);
+                      //  pref.setUserVOList(jsonOfuserVOList);
+                        Intent i = new Intent(getApplicationContext(), UserAcceptRejectRequestActivity.class);
+
+                        i.putExtra("desc",jsonObj.getString("desc"));
+                        i.putExtra("date", jsonObj.getString("date"));
+                        i.putExtra("amount", jsonObj.getString("amount"));
+                        i.putExtra("area", jsonObj.getString("area"));
+                        i.putExtra("category", jsonObj.getString("category"));
+                        i.putExtra("id", jsonObj.getString("id"));
+
                         startActivity(i);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                    // UserNoteVO userNoteVO = (UserNoteVO)intent.getSerializableExtra("userNoteVO");
 
-                   *//* Intent i = new Intent(getApplicationContext(), ShowMessagesActivity.class);
-                    startActivity(i);*//*
-                }
+                   /* Intent i = new Intent(getApplicationContext(), ShowMessagesActivity.class);
+                    startActivity(i);*/
+               // }
             }
-        }*/
+        }
     }
 
     private void displayFirebaseRegId() {

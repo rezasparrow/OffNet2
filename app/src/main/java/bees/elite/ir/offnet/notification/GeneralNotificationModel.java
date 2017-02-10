@@ -3,6 +3,7 @@ package bees.elite.ir.offnet.notification;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import bees.elite.ir.offnet.user.Coupn;
 import bees.elite.ir.offnet.user.UserNoteVO;
 
 
@@ -15,13 +16,6 @@ public class GeneralNotificationModel {
     @Expose
     private String noteType;
 
-    public UserNoteVO getUserNoteVO() {
-        return userNoteVO;
-    }
-
-    public void setUserNoteVO(UserNoteVO userNoteVO) {
-        this.userNoteVO = userNoteVO;
-    }
 
     public String getNoteType() {
         return noteType;
@@ -31,9 +25,17 @@ public class GeneralNotificationModel {
         this.noteType = noteType;
     }
 
-    @SerializedName("userNoteVO")
+    public Coupn getCoupn() {
+        return coupn;
+    }
+
+    public void setCoupn(Coupn coupn) {
+        this.coupn = coupn;
+    }
+
+    @SerializedName("coupn")
     @Expose
-    private UserNoteVO userNoteVO;
+    private Coupn coupn;
 
 
    /* @SerializedName("repairmanVO")
@@ -48,9 +50,9 @@ public class GeneralNotificationModel {
         this.repairmanVO = repairmanVO;
     }*/
 
-    public GeneralNotificationModel(String noteType,UserNoteVO userNoteVO) {
+    public GeneralNotificationModel(String noteType,Coupn coupn) {
         this.noteType = noteType;
-        this.userNoteVO=userNoteVO;
+        this.coupn=coupn;
         //this.repairmanVO = repairmanVO;
     }
 

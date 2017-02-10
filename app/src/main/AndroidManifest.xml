@@ -96,6 +96,13 @@
             android:windowSoftInputMode="adjustResize" >
         </activity>
 
+        <activity
+            android:name=".activities.UserAcceptRejectRequestActivity"
+            android:label="@string/title_activity_user_switch_state"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+
+
 
         <service android:name=".service.SerajFirebaseMessagingService" >
             <intent-filter>

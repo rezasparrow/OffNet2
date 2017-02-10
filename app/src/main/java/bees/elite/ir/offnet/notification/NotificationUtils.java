@@ -39,6 +39,7 @@ public class NotificationUtils {
     private static String TAG = NotificationUtils.class.getSimpleName();
 
     private Context mContext;
+    private final int count=(int)System.currentTimeMillis();
 
     public NotificationUtils(Context mContext) {
         this.mContext = mContext;
@@ -62,7 +63,7 @@ public class NotificationUtils {
         final PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
                         mContext,
-                        0,
+                        count,
                         intent,
                         PendingIntent.FLAG_CANCEL_CURRENT
                 );
@@ -112,7 +113,7 @@ public class NotificationUtils {
                 .build();
 
         NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(Config.NOTIFICATION_ID, notification);
+        notificationManager.notify(count, notification);
     }
 
     private void showBigNotification(Bitmap bitmap, NotificationCompat.Builder mBuilder, int icon, String title, String message, String timeStamp, PendingIntent resultPendingIntent, Uri alarmSound) {

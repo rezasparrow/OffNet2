@@ -24,10 +24,12 @@ import java.util.Collections;
 import java.util.List;
 
 import bees.elite.ir.offnet.activities.MainActivity;
+import bees.elite.ir.offnet.activities.UserAcceptRejectRequestActivity;
 import bees.elite.ir.offnet.config.Config;
 import bees.elite.ir.offnet.config.PrefManager;
 import bees.elite.ir.offnet.notification.GeneralNotificationModel;
 import bees.elite.ir.offnet.notification.NotificationUtils;
+import bees.elite.ir.offnet.user.Coupn;
 import bees.elite.ir.offnet.user.UserNoteVO;
 
 
@@ -56,24 +58,15 @@ public class SerajFirebaseMessagingService extends FirebaseMessagingService {
                 Gson gson = new Gson();
                 GeneralNotificationModel nrm = gson.fromJson(remoteMessage.getData().toString(), GeneralNotificationModel.class);
                 String noteType = nrm.getNoteType();
-               UserNoteVO userNoteVO = nrm.getUserNoteVO();
-               // String serviceName = nrm.getServiceName();
-               // String serviceDescription = nrm.getServiceDescription();
-               // String addres = nrm.getAddres();
-                //RepairManModel repairmanVO = nrm.getRepairmanVO();
-            /*    switch (noteType){
-                    case "repairmanInfo":
-                        if (remoteMessage.getNotification() != null) {
-                            handleUserNotification(repairmanVO);
-                        }
-                        break;*/
-                if (noteType.equals("general")) {
+                Coupn coupn = nrm.getCoupn();
+
+             //   if (noteType.equals("general")) {
                     if (remoteMessage.getNotification() != null) {
-                        handleGeneralNotification(noteType, remoteMessage.getNotification().getBody(),userNoteVO);
+                        handleGeneralNotification(noteType, remoteMessage.getNotification().getBody(),coupn);
                     }
 
                     //}
-                }
+                //}
             }catch (Exception e) {
                 Log.e(TAG, "Exception: " + e.getMessage());
             }
@@ -86,47 +79,48 @@ public class SerajFirebaseMessagingService extends FirebaseMessagingService {
     private void handleRepairmanNotFoundNotification() {
 
     }
-    private void handleGeneralNotification(String noteType,String message,UserNoteVO userNoteVO) {
+    private void handleGeneralNotification(String noteType,String message,Coupn coupn) {
         if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
             // app is in foreground, broadcast the push message
            Intent pushNotification = new Intent(Config.TOPIC_GLOBAL);
-            pushNotification.putExtra("message", userNoteVO.getMessage());
+            pushNotification.putExtra("message", message);
            // pushNotification.putExtra("requestId", reqId);
            // pushNotification.putExtra("serviceName", serviceName);
            // pushNotification.putExtra("serviceDescription", serviceDescription);
            // pushNotification.putExtra("address", address);
 
-            EventBus.getDefault().post(new GeneralNotificationModel(noteType,userNoteVO));
+            EventBus.getDefault().post(new GeneralNotificationModel(noteType,coupn));
             LocalBroadcastManager.getInstance(this).sendBroadcast(pushNotification);
             ActivityManager am = (ActivityManager)getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
             ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
-            Gson gson = new Gson();
+        /*    Gson gson = new Gson();
             String jsonOfUserVoList=pref.getUserVOList();
-            Type type = new TypeToken<List<UserNoteVO>>(){}.getType();
-            List<UserNoteVO> l=gson.fromJson(jsonOfUserVoList,type);
+            Type type = new TypeToken<List<Coupn>>(){}.getType();
+            List<Coupn> l=gson.fromJson(jsonOfUserVoList,type);
 
             l.add(userNoteVO);
             Collections.reverse(l);
             String jsonOfuserVOList = gson.toJson(l);
-            pref.setUserVOList(jsonOfuserVOList);
-/*
-            if(cn.getClassName().toString().equals("ir.seraj.generalnotification.activity.ShowMessagesActivity")){
-                Intent i = new Intent(getApplicationContext(), ShowMessagesActivity.class);
+            pref.setUserVOList(jsonOfuserVOList);*/
+
+
+                    Intent i = new Intent(getApplicationContext(), UserAcceptRejectRequestActivity.class);
+                    i.putExtra("desc",coupn.getDesc());
+                    i.putExtra("date", coupn.getToDate());
+                    i.putExtra("amount", coupn.getAmount());
+                    i.putExtra("area", coupn.getAreaName());
+                    i.putExtra("category", coupn.getCategoryName());
+                    i.putExtra("id", coupn.getId());
+            if(!cn.getClassName().toString().equals("bees.elite.ir.offnet.activities.UserAcceptRejectRequestActivity")){
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 //showNotificationMessage(getApplicationContext(), userNoteVO.getMessage(), userNoteVO.getMessage(), null, i);
             }
-                else{
-                    Intent i = new Intent(getApplicationContext(), ViewMessageInformationActivity.class);
-                    i.putExtra("information", userNoteVO.getMessage());
-                    i.putExtra("subjectMessage", userNoteVO.getNoteType());
-                    i.putExtra("userNoteId", userNoteVO.getId());
-                    i.putExtra("importance", userNoteVO.getImportance());
-                    i.putExtra("creationDate", userNoteVO.getCreationDateFA());
-                    i.putExtra("goToAddress", userNoteVO.getGotoAddress());
+            else {
 
-                    showNotificationMessage(getApplicationContext(), userNoteVO.getMessage(), userNoteVO.getMessage(), null, i);
+                showNotificationMessage(getApplicationContext(), message, message, null, i);
             }
+
             //Ev*//*entBus.getDefault().post(new GeneralNotificationModel(userNoteVO));*/
 
             // play notification sound
