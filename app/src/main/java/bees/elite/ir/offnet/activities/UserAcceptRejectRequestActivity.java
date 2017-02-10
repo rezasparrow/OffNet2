@@ -112,31 +112,46 @@ public class UserAcceptRejectRequestActivity extends AppCompatActivity {
         rejectbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* if (!(reqId.equals("") && reqId == null)) {
-                    Call<RepairManConfirmRejectResultModel> call = rc.getApi().rejectRequestByRepairman(pref.getRMAuthenticateToken(), "", pref.getAppRegId(), reqId);
-                    call.enqueue(new Callback<RepairManConfirmRejectResultModel>() {
-                        @Override
-                        public void onResponse(Call<RepairManConfirmRejectResultModel> call, Response<RepairManConfirmRejectResultModel> response) {
-                            if (response.isSuccessful()) {
-                                RepairManConfirmRejectResultModel res = response.body();
-                                if (res.getResult().equals("false")) {
-                                    Toast.makeText(RepairmanAcceptRejectRequestActivity.this, "مشکل در ارسال رد درخواست", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(RepairmanAcceptRejectRequestActivity.this, res.getResult(), Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), RepairmanSwitchStateActivity.class);
-                                    startActivity(intent);
-                                }
-                            } else {
-                                Toast.makeText(RepairmanAcceptRejectRequestActivity.this, "not success", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                Call<String> call = rc.getApi().reject(pref.getAppRegId(), coupnId.toString().trim(), pref.getAppRegId());
 
-                        @Override
-                        public void onFailure(Call<RepairManConfirmRejectResultModel> call, Throwable t) {
-                            Toast.makeText(RepairmanAcceptRejectRequestActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                call.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        if (response.isSuccessful()) {
+                            String res = response.body();
+                            //check beshe ke user pass doroste
+                            if (res!=null) {
+                                if (res.equals("true")) {
+                                    pref.setUserAuthenticateToken(res);
+                                    Intent intent = new Intent(getApplicationContext(),UserSwitchStateActivity.class);
+                                    pref.setUserVOList("");
+                                    startActivity(intent);
+                                    //Pbar.setVisibility(View.GONE);
+                                    Toast.makeText(UserAcceptRejectRequestActivity.this, "لغو پرداخت با موفقیت انجام شد", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+                                    Toast.makeText(UserAcceptRejectRequestActivity.this, "خطا در لغو پرداخت", Toast.LENGTH_SHORT).show();
+                                    // Pbar.setVisibility(View.GONE);
+                                }
+                            }
+                            else {
+
+                                Toast.makeText(UserAcceptRejectRequestActivity.this, "خطا در لغو پرداخت", Toast.LENGTH_SHORT).show();
+                                // Pbar.setVisibility(View.GONE);
+                            }
+
+                        } else {
+
+                            Toast.makeText(UserAcceptRejectRequestActivity.this, "not success", Toast.LENGTH_SHORT).show();
+                            // Pbar.setVisibility(View.GONE);
                         }
-                    });
-                }*/
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(UserAcceptRejectRequestActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

@@ -17,7 +17,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
-import com.loopj.android.http.AsyncHttpClient;
 
 import bees.elite.ir.api.ServerService;
 
@@ -49,7 +48,6 @@ public class LocationService extends Service implements LocationListener {
 
     // Declaring a Location Manager
     protected LocationManager locationManager;
-    static AsyncHttpClient client;
 
     public LocationService() {
         preLocation = new Location("");
